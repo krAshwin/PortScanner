@@ -9,9 +9,9 @@ def check(port):
     res = sock.connect_ex(location)
 
     if res == 0:
-        print("Port {0} is open!".format(port))
+        print("{0:5d}: Port OPEN!".format(port))
     else:
-        print("Port {0} is not open!".format(port))
+        print("{0:5d}: Port CLOSED!".format(port))
 
     sock.close()
 
@@ -19,10 +19,16 @@ def check(port):
 def main():
 
     ports = (21,22,80,443)
+    
+    print("Port Status!\n======================")
     for port in ports:
-        thread  = Thread(target=check, args=(port,))
-        thread.start()
 
+        # daemon threads terminate as the program ends
+        thread  = Thread(target=check, args=(port,), daemon= True)
+        thread.start()
+    
+    # wait until thread executes completely
+    thread.join()
 
 if __name__ == '__main__':
     main()
