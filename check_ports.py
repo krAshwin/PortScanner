@@ -5,10 +5,8 @@ import socket
 
 def check(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    location = ('127.0.0.1', port)
-    print(location)
+    location = ('192.168.1.100', port)
     res = sock.connect_ex(location)
-    print(res)
 
     if res == 0:
         print("Port {0} is open!".format(port))
