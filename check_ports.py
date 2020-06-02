@@ -5,7 +5,8 @@ import socket
 
 def check(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    location = (socket.gethostname(), port)
+    location = ('127.0.0.1', port)
+    print(location)
     res = sock.connect_ex(location)
     print(res)
 
