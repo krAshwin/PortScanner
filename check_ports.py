@@ -5,7 +5,7 @@ import socket
 
 def check(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    location = ('192.168.1.100', port)
+    location = ('127.0.0.1', port)
     res = sock.connect_ex(location)
 
     if res == 0:
